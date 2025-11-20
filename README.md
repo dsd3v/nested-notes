@@ -2,7 +2,7 @@
 
 ### A full stack web application where a user can create an account or sign in with Google and recursively add, store, categorize, and edit thoughts, notes, quotes, etc. in vaults.
 
-### Note: Site is no longer functional.
+### Note: Mind Vault is no longer online/maintained.
 
 #### Features:
 
@@ -38,3 +38,4 @@
 ![img2](images/img2.png)
 ![img3](images/img3.png)
 ![img4](images/img4.png)
+
