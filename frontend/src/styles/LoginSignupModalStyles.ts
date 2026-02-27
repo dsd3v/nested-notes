@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-
 import { colors, NAV_HEIGHT } from '../constants';
 import { StyledLink } from './GlobalStyles';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   align-items: center;
@@ -20,7 +19,7 @@ export const ModalNav = styled.div`
   width: 50%;
 `;
 
-export const ModalNavText = styled(StyledLink)<{
+export const ModalNavText = styled(StyledLink) <{
   $isSelected: boolean;
 }>`
   border-bottom: ${({ $isSelected }) => ($isSelected ? '1px solid' : 'none')};

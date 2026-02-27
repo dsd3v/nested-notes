@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import { colors, NAV_HEIGHT } from '../constants';
+import styled from 'styled-components';
 
 export const Nav = styled.nav`
   align-items: center;

@@ -1,7 +1,7 @@
 {
   "display": "standalone",
-  "name": "Mind Vault",
-  "short_name": "Mind Vault",
+  "name": "Nested Notes",
+  "short_name": "nested-notes",
   "start_url": ".",
-  "theme_color": "#000000"
+  "theme_color": "#ffffff"
 }

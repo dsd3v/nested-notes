@@ -1,15 +1,8 @@
 import { logOut } from '../actions/userActions';
-import { enterVault } from '../actions/vaultActions';
+import { enterNotesContainer } from '../actions/notesContainerActions';
 import { selectUserEmail, selectUserIsAuthenticated } from '../selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from '../store';
-import {
-  Nav,
-  NavButtonsDiv,
-  NavLoginOrSignupButton,
-  NavSignoutButton,
-  NavTitle,
-  UserEmailSpan,
-} from '../styles/NavbarStyles';
+import { Nav, NavButtonsDiv, NavLoginOrSignupButton, NavSignoutButton, NavTitle, UserEmailSpan } from '../styles/NavbarStyles';
 
 export const Navbar = ({ openLoginSignupModal }: { openLoginSignupModal: () => void }) => {
   const dispatch = useAppDispatch();
@@ -18,7 +11,7 @@ export const Navbar = ({ openLoginSignupModal }: { openLoginSignupModal: () => v
 
   return (
     <Nav>
-      <NavTitle onClick={() => dispatch(enterVault({ isEnteringRoot: true }))}>Mind Vault</NavTitle>
+      <NavTitle onClick={() => dispatch(enterNotesContainer({ isEnteringRoot: true }))}>Nested Notes Containers</NavTitle>
       {isLoggedIn ? (
         <NavButtonsDiv>
           <NavSignoutButton onClick={() => dispatch(logOut())}>Sign Out</NavSignoutButton>

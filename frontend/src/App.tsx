@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import { AuthWrapper } from './auth/AuthWrapper';
 import { Home } from './components/Home';
 import { Navbar } from './components/Navbar';
 import { PageNotFound } from './components/PageNotFound';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { selectUserIsAuthenticated } from './selectors/userSelectors';
 import { useAppSelector } from './store';
 

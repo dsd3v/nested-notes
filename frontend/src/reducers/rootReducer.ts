@@ -1,13 +1,12 @@
+import { appStateReducer } from './appStateReducer';
+import { noteReducer } from './noteReducer';
+import { notesContainerReducer } from './notesContainerReducer';
 import { combineReducers } from 'redux';
-
-import { mindReducer } from './mindReducer';
-import { thoughtReducer } from './thoughtReducer';
 import { userReducer } from './userReducer';
-import { vaultReducer } from './vaultReducer';
 
 export const rootReducer = combineReducers({
-  mind: mindReducer,
-  thought: thoughtReducer,
+  appState: appStateReducer,
+  note: noteReducer,
   user: userReducer,
-  vault: vaultReducer,
+  notesContainer: notesContainerReducer,
 });

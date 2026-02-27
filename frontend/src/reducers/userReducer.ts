@@ -1,5 +1,3 @@
-import { createReducer } from '@reduxjs/toolkit';
-
 import {
   CLEAR_FORM,
   LOG_IN_FAILED,
@@ -16,6 +14,7 @@ import {
   SIGN_UP_SUCCEEDED,
 } from '../actions/userActions';
 import { UserStateI } from '../interfaces';
+import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   errorMessage: '',

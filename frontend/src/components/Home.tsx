@@ -1,37 +1,35 @@
+import { LoginSignupModal } from './login_signup/LoginSignupModal';
+import { NotesContainer } from './notes_containers/NotesContainer';
 import { TailSpin } from 'react-loader-spinner';
-
-import defaultVaultImgUrl from '../images/vaultPic.jpg';
-import { LoginSignupModal } from './LoginSignupModal';
-import { selectMindCurrentVault, selectMindIsLoading } from '../selectors/mindSelectors';
+import { selectCurrentNotesContainer, selectAppStateIsLoading } from '../selectors/appStateSelectors';
 import { selectUserIsAuthenticated } from '../selectors/userSelectors';
 import { useAppSelector } from '../store';
 import { Container, Div } from '../styles/GlobalStyles';
-import { LoginSignupCell, VaultImage, VaultTitle } from '../styles/VaultStyles';
-import { Vault } from './Vault';
+import { LoginSignupCell, NotesContainerTitle } from '../styles/NotesStyles';
 
 export const Home = ({
-  closeLoginSignupModal = () => {},
+  closeLoginSignupModal = () => { },
   isLoginSignupModalOpen = false,
-  openLoginSignupModal = () => {},
+  openLoginSignupModal = () => { },
 }: {
   closeLoginSignupModal?: () => void;
   isLoginSignupModalOpen?: boolean;
   openLoginSignupModal?: () => void;
 }) => {
-  const currentVault = useAppSelector(selectMindCurrentVault);
+  const currentNotesContainer = useAppSelector(selectCurrentNotesContainer);
   const isAuthenticated = useAppSelector(selectUserIsAuthenticated);
-  const isLoadingVaults = useAppSelector(selectMindIsLoading);
+  const isLoadingNotesContainers = useAppSelector(selectAppStateIsLoading);
 
   return isAuthenticated ? (
-    isLoadingVaults ? (
+    isLoadingNotesContainers ? (
       <Container>
         <Div $d="column" $f="1.2rem" $m="40px 0 0 0">
-          <span style={{ paddingBottom: '38px' }}>Fetching vaults...</span>
+          <span style={{ paddingBottom: '38px' }}>Fetching Notes Containers...</span>
           <TailSpin color="#00BFFF" height={70} width={70} />
         </Div>
       </Container>
     ) : (
-      !!currentVault && <Vault vault={currentVault} />
+      !!currentNotesContainer && <NotesContainer notesContainer={currentNotesContainer} />
     )
   ) : (
     <Container>
@@ -42,8 +40,7 @@ export const Home = ({
         />
       )}
       <LoginSignupCell onClick={() => openLoginSignupModal()}>
-        <VaultTitle>Log In or Sign Up to view or create Mind Vaults.</VaultTitle>
-        <VaultImage src={defaultVaultImgUrl} />
+        <NotesContainerTitle>Log In or Sign Up to view or create Nested Notes Containers.</NotesContainerTitle>
       </LoginSignupCell>
     </Container>
   );

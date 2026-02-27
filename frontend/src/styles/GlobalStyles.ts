@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import { colors, NAV_HEIGHT } from '../constants';
+import styled from 'styled-components';
 
 export const AlertDiv = styled.div`
   position: fixed;

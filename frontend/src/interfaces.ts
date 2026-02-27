@@ -1,33 +1,33 @@
-export interface MindStateI {
-  didEditThoughts: boolean;
-  didEnterOrExitVault: boolean;
+export interface AppStateI {
+  didEditNotes: boolean;
+  didEnterOrExitNotesContainer: boolean;
   errorMessage: string;
   isLoading: boolean;
-  vaultStack: VaultI[];
-}
+  notesContainerStack: NotesContainerI[];
+};
 
-export interface ThoughtI {
+export interface NoteI {
   html: string;
-  thoughtId: string;
-}
+  noteId: string;
+};
 
-export interface ThoughtStateI {
-  addingThoughtErrorMessage: string;
-  addingThoughtSuccessMessage: string;
-  deletingThoughtErrorMessage: string;
-  deletingThoughtSuccessMessage: string;
-  editingThoughtsErrorMessage: string;
-  editingThoughtsSuccessMessage: string;
-  isAddingThought: boolean;
-  isDeletingThought: boolean;
-  isEditingThoughts: boolean;
-}
+export interface NoteStateI {
+  addingNoteErrorMessage: string;
+  addingNoteSuccessMessage: string;
+  deletingNoteErrorMessage: string;
+  deletingNoteSuccessMessage: string;
+  editingNotesErrorMessage: string;
+  editingNotesSuccessMessage: string;
+  isAddingNote: boolean;
+  isDeletingNote: boolean;
+  isEditingNotes: boolean;
+};
 
 interface UserI {
   email: string;
   token: string;
   userId: string;
-}
+};
 
 export interface UserStateI {
   errorMessage: string;
@@ -35,31 +35,31 @@ export interface UserStateI {
   isSignUpLoading: boolean;
   successMessage: '';
   userData: UserI;
-}
+};
 
-export interface VaultEditRequestI {
+export interface NotesContainerEditRequestI {
   newImage: string | File | null;
   newName: string;
-  vaultId: string;
-}
+  notesContainerId: string;
+};
 
-export interface VaultI {
-  childVaults: VaultI[];
+export interface NotesContainerI {
+  childNotesContainers: NotesContainerI[];
   imageUrl: string;
   name: string;
-  thoughts: ThoughtI[];
-  vaultId: string;
-}
+  notes: NoteI[];
+  notesContainerId: string;
+};
 
-export interface VaultStateI {
-  addingVaultErrorMessage: string;
-  addingVaultSuccessMessage: string;
-  deletingVaultErrorMessage: string;
-  deletingVaultSuccessMessage: string;
-  editingVaultsErrorMessage: string;
-  editingVaultsSuccessMessage: string;
-  isAddingVault: boolean;
-  isDeletingVault: boolean;
-  isEditingVaults: boolean;
-  reorderingVaultsErrorMessage: string;
-}
+export interface NotesContainerStateI {
+  addingNotesContainerErrorMessage: string;
+  addingNotesContainerSuccessMessage: string;
+  deletingNotesContainerErrorMessage: string;
+  deletingNotesContainerSuccessMessage: string;
+  editingNotesContainersErrorMessage: string;
+  editingNotesContainersSuccessMessage: string;
+  isAddingNotesContainer: boolean;
+  isDeletingNotesContainer: boolean;
+  isEditingNotesContainers: boolean;
+  reorderingNotesContainersErrorMessage: string;
+};

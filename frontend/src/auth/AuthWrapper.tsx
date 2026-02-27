@@ -1,8 +1,7 @@
-import { ReactNode, useEffect } from 'react';
-
-import { getMind } from '../actions/mindActions';
+import { getInitialAppState } from '../actions/initialAppStateActions';
 import { LOG_IN_SUCCEEDED, SIGN_UP_SUCCEEDED } from '../actions/userActions';
 import { auth } from './firebase';
+import { ReactNode, useEffect } from 'react';
 import { useAppDispatch } from '../store';
 
 export const AuthWrapper = ({ children }: { children: ReactNode }) => {
@@ -38,7 +37,7 @@ export const AuthWrapper = ({ children }: { children: ReactNode }) => {
               },
             })
           );
-          dispatch(getMind({ userId }));
+          dispatch(getInitialAppState({ userId }));
         }
       }
     });

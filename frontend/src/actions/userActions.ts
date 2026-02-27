@@ -1,3 +1,4 @@
+import { auth } from '../auth/firebase';
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -7,8 +8,6 @@ import {
   signOut,
 } from 'firebase/auth';
 import { createAction, Dispatch } from '@reduxjs/toolkit';
-
-import { auth } from '../auth/firebase';
 
 export const CLEAR_FORM = createAction('CLEAR_FORM');
 
@@ -44,15 +43,15 @@ export const SIGN_UP_SUCCEEDED = createAction('SIGN_UP_SUCCEEDED', ({ userData }
 
 export const logIn =
   ({ email, password }: { email: string; password: string }) =>
-  async (dispatch: Dispatch) => {
-    dispatch(LOG_IN_STARTED());
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.error(error);
-      dispatch(LOG_IN_FAILED({ errorMessage: 'Log In Failed.' }));
-    }
-  };
+    async (dispatch: Dispatch) => {
+      dispatch(LOG_IN_STARTED());
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (error) {
+        console.error(error);
+        dispatch(LOG_IN_FAILED({ errorMessage: 'Log In Failed.' }));
+      }
+    };
 
 export const logInWithGoogle = () => async (dispatch: Dispatch) => {
   dispatch(LOG_IN_STARTED());
@@ -79,44 +78,44 @@ export const logOut = () => async (dispatch: Dispatch) => {
 
 export const resetPassword =
   ({ email }: { email: string }) =>
-  async (dispatch: Dispatch) => {
-    dispatch(RESET_PASSWORD_STARTED());
-    try {
-      await sendPasswordResetEmail(auth, email);
-      dispatch(
-        RESET_PASSWORD_SUCCEEDED({
-          successMessage: 'Reset password email sent.',
-        })
-      );
-    } catch (error) {
-      console.error(error);
-      dispatch(
-        RESET_PASSWORD_FAILED({
-          errorMessage: (error as Error).toString().includes('not-found')
-            ? 'A user with this email does not exist.'
-            : 'Error: Failed to send reset password email.',
-        })
-      );
-    }
-  };
+    async (dispatch: Dispatch) => {
+      dispatch(RESET_PASSWORD_STARTED());
+      try {
+        await sendPasswordResetEmail(auth, email);
+        dispatch(
+          RESET_PASSWORD_SUCCEEDED({
+            successMessage: 'Reset password email sent.',
+          })
+        );
+      } catch (error) {
+        console.error(error);
+        dispatch(
+          RESET_PASSWORD_FAILED({
+            errorMessage: (error as Error).toString().includes('not-found')
+              ? 'A user with this email does not exist.'
+              : 'Error: Failed to send reset password email.',
+          })
+        );
+      }
+    };
 
 export const signUp =
   ({ email, password }: { email: string; password: string }) =>
-  async (dispatch: Dispatch) => {
-    dispatch(SIGN_UP_STARTED());
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.error(error);
-      const errorString = (error as Error).toString();
-      dispatch(
-        SIGN_UP_FAILED({
-          errorMessage: errorString.includes('invalid-email')
-            ? 'Error: Sign Up Failed - Invalid email entered.'
-            : errorString.includes('email-already-in-use')
-            ? 'Sign Up Failed - A user with this email already exists.'
-            : 'Error: Sign Up Failed.',
-        })
-      );
-    }
-  };
+    async (dispatch: Dispatch) => {
+      dispatch(SIGN_UP_STARTED());
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+      } catch (error) {
+        console.error(error);
+        const errorString = (error as Error).toString();
+        dispatch(
+          SIGN_UP_FAILED({
+            errorMessage: errorString.includes('invalid-email')
+              ? 'Error: Sign Up Failed - Invalid email entered.'
+              : errorString.includes('email-already-in-use')
+                ? 'Sign Up Failed - A user with this email already exists.'
+                : 'Error: Sign Up Failed.',
+          })
+        );
+      }
+    };
