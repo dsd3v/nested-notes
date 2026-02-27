@@ -9,5 +9,5 @@
 - NodeJS
 - Express
 - Neo4j Aura DB
-- AWS file storage
+- AWS S3 file storage
 - Firebase authentication
