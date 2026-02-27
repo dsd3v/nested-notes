@@ -1,5 +1,7 @@
 # Nested Notes
 
+**A full-stack web application for storing notes in a nested format.**
+
 ## Note: Nested Notes is currently not live.
 
 ### Technologies Used:
